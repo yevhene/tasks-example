@@ -1,12 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const ObjectId = mongodb.ObjectId;
-const mongoUrl = 'mongodb://localhost:27017/tasks';
+const mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/tasks';
 
 let mongo;
 MongoClient
