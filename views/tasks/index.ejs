@@ -1,0 +1,31 @@
+<h1>Задачі</h1>
+
+<ul>
+  <% for (let i = 0; i < tasks.length; i++) { %>
+    <li>
+      <label>
+        <form
+          method="POST"
+          action="/tasks/<%= tasks[i]._id %>/complete"
+          style="display: inline-block"
+        >
+          <% if (tasks[i].completed) { %>
+            <input type="submit" value="X" />
+          <% } else { %>
+            <input type="submit" value="&#10003;" />
+          <% } %>
+        </form>
+        <span
+          style="<%= tasks[i].completed ? 'text-decoration: line-through' : '' %>"
+        >
+          <%= tasks[i].name %>
+        </span>
+      </label>
+    </li>
+  <% } %>
+</ul>
+
+<form method="POST" action="/">
+  <input type="text" name="name" />
+  <input type="submit" value="Створити задачу">
+</form>
